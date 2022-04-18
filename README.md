@@ -5,7 +5,7 @@
 
 ## Tecnologias e ferramentas utilizadas
 - Flutter com Material;
-- Arqutitetura Clean/TDD;
+- Arquitetura Clean/TDD;
 - Padrão BLoC;
 - Insomnia para teste de consulta;
 
