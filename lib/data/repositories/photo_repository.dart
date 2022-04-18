@@ -47,7 +47,7 @@ class PhotoRepository implements IPhotoRepository {
   @override
   Future<Photo> updatePhoto(int id, Photo photo) async {
     final String updateJson = jsonEncode(photo.toJson());
-    final http.Response response = await http.put(
+    final http.Response response = await client.put(
         Uri.parse('$baseUrl/photos/$id'),
         headers: headerAPI,
         body: updateJson);
@@ -59,7 +59,7 @@ class PhotoRepository implements IPhotoRepository {
 
   @override
   Future<http.Response> deletePhoto(int id) async {
-    final http.Response response = await http.delete(
+    final http.Response response = await client.delete(
       Uri.parse('$baseUrl/photos/$id'),
       headers: headerAPI,
     );

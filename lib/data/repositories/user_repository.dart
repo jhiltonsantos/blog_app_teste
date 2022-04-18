@@ -43,7 +43,7 @@ class UserRepository implements IUserRepository {
   @override
   Future<User> updateUser(int id, User user) async {
     final String updateJson = jsonEncode(user.toJson());
-    final http.Response response = await http.put(
+    final http.Response response = await client.put(
         Uri.parse('$baseUrl/users/$id'),
         headers: headerAPI,
         body: updateJson);
@@ -55,7 +55,7 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<http.Response> deleteUser(int id) async {
-    final http.Response response = await http.delete(
+    final http.Response response = await client.delete(
       Uri.parse('$baseUrl/users/$id'),
       headers: headerAPI,
     );
