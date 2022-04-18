@@ -1,5 +1,8 @@
 import 'package:blog_teste_tecnico/domain/post.dart';
 import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_posts/user_posts_container.dart';
+import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/button_options.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
@@ -52,9 +55,23 @@ class _ViewPost extends StatelessWidget {
           preferredSize: const Size.fromHeight(120)),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
           child: Column(
             children: <Widget>[
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      pushNavigator(context, UserPostsContainer(user: user));
+                    },
+                    child: Text(user.name!,
+                        style: const TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+              ),
               Center(
                   child: Text(
                 post.title,
@@ -70,17 +87,6 @@ class _ViewPost extends StatelessWidget {
                   style: const TextStyle(fontSize: 24.0),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Text(
-                    'Autor(a): ${user.name}',
-                    style: const TextStyle(
-                        fontSize: 20.0, fontStyle: FontStyle.italic),
-                  ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.only(top: 50.0),
                 child: Row(
@@ -93,7 +99,8 @@ class _ViewPost extends StatelessWidget {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => PostEditContainer(user: user, post: post)),
+                              builder: (_) =>
+                                  PostEditContainer(user: user, post: post)),
                         );
                       },
                     ),
@@ -101,7 +108,8 @@ class _ViewPost extends StatelessWidget {
                       text: 'Deletar',
                       colorButton: Colors.redAccent,
                       onTap: () {
-                        BlocProvider.of<PostCubit>(context).delete(post.id, context);
+                        BlocProvider.of<PostCubit>(context)
+                            .delete(post.id, context);
                       },
                     ),
                   ],

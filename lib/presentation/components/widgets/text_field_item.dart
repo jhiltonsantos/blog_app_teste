@@ -5,6 +5,9 @@ Padding textFieldItem(TextEditingController controller) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10.0),
     child: TextField(
+      maxLines: 10,
+      minLines: 1,
+      expands: false,
       controller: controller,
       style: const TextStyle(fontSize: 20.0),
       decoration: const InputDecoration(

@@ -8,7 +8,6 @@ import 'package:blog_teste_tecnico/presentation/components/widgets/label_form_it
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user/user_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_container.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -94,16 +93,23 @@ class _ViewUser extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30.0),
+                padding: const EdgeInsets.symmetric(vertical: 40.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    buildButtonOptions(text: 'Editar', colorButton: Colors.blueAccent, onTap: () {
-                      pushNavigator(context, UserEditContainer(user: user));
-                    }),
-                    buildButtonOptions(text: 'Deletar', colorButton: Colors.redAccent, onTap: () {
-                      BlocProvider.of<UserCubit>(context).deleteUser(context, user.id!);
-                    }),
+                    buildButtonOptions(
+                        text: 'Editar',
+                        colorButton: Colors.blueAccent,
+                        onTap: () {
+                          pushNavigator(context, UserEditContainer(user: user));
+                        }),
+                    buildButtonOptions(
+                        text: 'Deletar',
+                        colorButton: Colors.redAccent,
+                        onTap: () {
+                          BlocProvider.of<UserCubit>(context)
+                              .deleteUser(context, user.id!);
+                        }),
                   ],
                 ),
               ),

@@ -1,13 +1,14 @@
 import 'package:blog_teste_tecnico/domain/post.dart';
 import 'package:blog_teste_tecnico/domain/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/post_edit/post_edit_bloc.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
+import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/label_form.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/text_field_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostEditView extends StatelessWidget {
@@ -46,6 +47,8 @@ class _NewPostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _titleController.text = post.title;
+    _bodyController.text = post.body;
     return Scaffold(
       appBar: PreferredSize(
           child: AppBarBlogApp(
@@ -58,16 +61,21 @@ class _NewPostView extends StatelessWidget {
           preferredSize: const Size.fromHeight(120)),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  user.name!,
-                  style: const TextStyle(
-                    fontSize: 24.0,
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      pushNavigator(context, UserContainer(user));
+                    },
+                    child: Text(user.name!,
+                        style: const TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ),

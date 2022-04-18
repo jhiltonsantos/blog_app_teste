@@ -6,7 +6,6 @@ import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialo
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/text_field_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostFormView extends StatelessWidget {

@@ -7,14 +7,19 @@ class AppBarBlogApp extends StatelessWidget {
   final IconData rightIcon;
 
   const AppBarBlogApp({
-    Key? key, required this.title, this.leadingOnTap, required this.leadingIcon, required this.rightIcon,
+    Key? key,
+    required this.title,
+    this.leadingOnTap,
+    required this.leadingIcon,
+    required this.rightIcon,
   }) : super(key: key);
-
+  // TODO: Tornar expanded o Titulo do AppBar
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 30.0, bottom: 20.0),
+        padding: const EdgeInsets.only(
+            left: 20.0, right: 20.0, top: 30.0, bottom: 20.0),
         child: Container(
           color: Colors.transparent,
           child: Row(
@@ -22,12 +27,12 @@ class AppBarBlogApp extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: leadingOnTap ?? () {},
-                child: Icon(
-                    leadingIcon,
-                    size: 30.0
-                ),
+                child: Icon(leadingIcon, size: 30.0),
               ),
-              Text(title, style: const TextStyle(fontSize: 26.0),),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 26.0),
+              ),
               Icon(
                 rightIcon,
                 size: 30.0,

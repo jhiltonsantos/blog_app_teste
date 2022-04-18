@@ -9,7 +9,6 @@ import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indi
 import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/text_field_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserFormView extends StatelessWidget {
@@ -150,8 +149,4 @@ class _NewUserView extends StatelessWidget {
       ),
     );
   }
-
-
-
-  
 }

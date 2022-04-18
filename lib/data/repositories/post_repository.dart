@@ -18,6 +18,26 @@ class PostRepository {
     return posts;
   }
 
+  // TODO: Testar funcao findAllPostsByUser
+  Future<List<Post>> findAllPostsByUser(int idUser) async {
+    final http.Response response =
+        await client.get(Uri.parse('$baseUrl/posts'));
+
+    if (response.statusCode != 200) {
+      throw Exception('Falha ao carregar posts');
+    }
+    final List<dynamic> decodedJson = jsonDecode(response.body);
+    final List<dynamic> userJson = [];
+    for (int index = 0; index < decodedJson.length; index++) {
+      if (decodedJson[index]['userId'] == idUser) {
+        userJson.add(decodedJson[index]);
+      }
+    }
+    final List<Post> postsUser =
+        userJson.map((dynamic json) => Post.fromJson(json)).toList();
+    return postsUser;
+  }
+
   Future<Post> findPostByID(int id) async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/posts/$id'));

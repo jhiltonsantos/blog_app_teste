@@ -42,6 +42,8 @@ class _UpdatePhotoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _titleController.text = photo.title!;
+    _urlController.text = photo.url!;
     return Scaffold(
       appBar: PreferredSize(
           child: AppBarBlogApp(

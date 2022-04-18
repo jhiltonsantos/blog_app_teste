@@ -9,16 +9,12 @@ import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indi
 import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/text_field_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserEditView extends StatelessWidget {
   final User user;
 
-
-  const UserEditView({Key? key, required this.user})
-      : super(key: key);
-
+  const UserEditView({Key? key, required this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserEditCubit, UserEditState>(builder: (context, state) {
@@ -39,9 +35,7 @@ class UserEditView extends StatelessWidget {
 class _UpdateUserView extends StatelessWidget {
   final User user;
 
-
-  _UpdateUserView({Key? key, required this.user})
-      : super(key: key);
+  _UpdateUserView({Key? key, required this.user}) : super(key: key);
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
@@ -56,9 +50,18 @@ class _UpdateUserView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _nameController.text = user.name!;
+    _usernameController.text = user.username!;
+    _emailController.text = user.email!;
+    _streetController.text = user.address.street;
+    _cityController.text = user.address.city;
+    _cepController.text = user.address.zipcode;
+    _phoneController.text = user.phone!;
+    _websiteController.text = user.website!;
+    _nameCompanyController.text = user.company.name;
+    _bsCompanyController.text = user.company.bs;
     return Scaffold(
-      appBar:
-      PreferredSize(
+      appBar: PreferredSize(
           child: AppBarBlogApp(
               title: 'Atualizar Usuário',
               leadingIcon: Icons.arrow_back,
