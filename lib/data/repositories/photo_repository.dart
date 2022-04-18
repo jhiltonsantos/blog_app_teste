@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 import 'package:blog_teste_tecnico/data/webclient.dart';
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
+import 'package:blog_teste_tecnico/domain/repositories/iphoto_repository.dart';
 import 'package:http/http.dart' as http;
 
-class PhotoRepository {
+class PhotoRepository implements IPhotoRepository {
+
+  @override
   Future<List<Photo>> findAllPhotos() async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/photos'));
@@ -17,6 +20,7 @@ class PhotoRepository {
     return photos;
   }
 
+  @override
   Future<Photo> findPhotoById(int id) async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/photos/$id'));
@@ -27,35 +31,24 @@ class PhotoRepository {
     return Photo.fromJson(decodedJson);
   }
 
+  @override
   Future<Photo> savePhoto(Photo photo) async {
     final String photoJson = jsonEncode(photo.toJson());
-    final http.Response response =
-        await client.post(Uri.parse('$baseUrl/photos'),
-            headers: headerAPI,
-            body: photoJson);
+    final http.Response response = await client.post(
+        Uri.parse('$baseUrl/photos'),
+        headers: headerAPI,
+        body: photoJson);
     if (response.statusCode != 201) {
       throw Exception('Falha em inserir nova foto');
     }
     return Photo.fromJson(jsonDecode(response.body));
   }
 
-  Future<Photo> updateUrlPhoto(int id, String url) async {
-    final http.Response response =
-        await http.put(Uri.parse('$baseUrl/photos/$id'),
-            headers: headerAPI,
-            body: jsonEncode({
-              'url': url,
-            }));
-    if (response.statusCode != 200) {
-      throw Exception('Falha ao atualizar url da foto');
-    }
-    return Photo.fromJson(jsonDecode(response.body));
-  }
-
-  Future<Photo> update(int id, Photo photo) async {
+  @override
+  Future<Photo> updatePhoto(int id, Photo photo) async {
     final String updateJson = jsonEncode(photo.toJson());
-    final http.Response response =
-    await http.put(Uri.parse('$baseUrl/photos/$id'),
+    final http.Response response = await http.put(
+        Uri.parse('$baseUrl/photos/$id'),
         headers: headerAPI,
         body: updateJson);
     if (response.statusCode != 200) {
@@ -64,6 +57,7 @@ class PhotoRepository {
     return Photo.fromJson(jsonDecode(response.body));
   }
 
+  @override
   Future<http.Response> deletePhoto(int id) async {
     final http.Response response = await http.delete(
       Uri.parse('$baseUrl/photos/$id'),

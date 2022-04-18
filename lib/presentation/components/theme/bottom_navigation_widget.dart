@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/posts_list/posts_list_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/users_list/users_list_container.dart';

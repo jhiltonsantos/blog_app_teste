@@ -1,10 +1,10 @@
 import 'package:blog_teste_tecnico/data/repositories/post_repository.dart';
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/post/post_container.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/posts_list/posts_list_bloc.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user_posts/user_posts_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/post_item.dart';
@@ -24,8 +24,10 @@ class UserPostsView extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           child: AppBarBlogApp(
-              title: 'Posts ${user.name}',
+              title: 'Posts ${user.name!}',
               leadingIcon: Icons.arrow_back,
+              flex: 2,
+              padding: 30.0,
               leadingOnTap: () {
                 Navigator.pop(context);
               },
@@ -41,13 +43,11 @@ class UserPostsView extends StatelessWidget {
             return ListView.builder(
               itemBuilder: (context, index) {
                 final Post post = posts[index];
-                return PostItem(post, onTap: () async {
+                return PostUserItem(post, onTap: () async {
                   User user = await BlocProvider.of<UserPostsCubit>(context)
                       .getUser(post.userId);
-                  // TODO: Fazer o push para o post
                   pushNavigator(context, PostContainer(post, user));
-                  print("Passando pelo POSTITEM");
-                });
+                }, index: index+1,);
               },
               itemCount: posts.length,
             );
@@ -56,6 +56,12 @@ class UserPostsView extends StatelessWidget {
             return FailureDialog(state.message);
           }
           return const FailureDialog('Erro Desconhecido');
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.person),
+        onPressed: () async {
+          pushNavigator(context, UserContainer(user));
         },
       ),
     );

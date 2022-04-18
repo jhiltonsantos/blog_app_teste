@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppBarBlogApp extends StatelessWidget {
   final String title;
+  final double? fontSize;
+  final int? flex;
+  final double? padding;
   final Function()? leadingOnTap;
   final IconData leadingIcon;
   final IconData rightIcon;
@@ -10,10 +13,11 @@ class AppBarBlogApp extends StatelessWidget {
     Key? key,
     required this.title,
     this.leadingOnTap,
+    this.fontSize,
     required this.leadingIcon,
-    required this.rightIcon,
+    required this.rightIcon, this.flex, this.padding,
   }) : super(key: key);
-  // TODO: Tornar expanded o Titulo do AppBar
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,9 +33,21 @@ class AppBarBlogApp extends StatelessWidget {
                 onTap: leadingOnTap ?? () {},
                 child: Icon(leadingIcon, size: 30.0),
               ),
-              Text(
-                title,
-                style: const TextStyle(fontSize: 26.0),
+              // TODO: Melhorar title da AppBar
+              Expanded(
+                flex: flex ?? 0,
+                child: Padding(
+                  padding: EdgeInsets.only(left: padding ?? 0),
+                  child: Text(
+                    title,
+                    style:  TextStyle(
+                      fontSize: fontSize ?? 24.0,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    softWrap: false,
+                  ),
+                ),
               ),
               Icon(
                 rightIcon,

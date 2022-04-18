@@ -1,13 +1,14 @@
-import 'package:blog_teste_tecnico/domain/user.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_bloc.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
+import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/button_options.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/label_form.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/label_form_item.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user/user_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,7 +35,6 @@ class UserView extends StatelessWidget {
 class _ViewUser extends StatelessWidget {
   final User user;
 
-  // TODO: AO CLICAR NO USUARIO MOSTRAR TODOS OS POST DELE
   const _ViewUser({Key? key, required this.user}) : super(key: key);
 
   @override
@@ -56,42 +56,22 @@ class _ViewUser extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              labelFormItem('Nome de Usuario'),
-              buildDataUser(user.username!),
-              labelFormItem('Email'),
-              buildDataUser(user.email!),
-              labelFormItem('Telefone'),
-              buildDataUser(user.phone!),
-              labelFormItem('Site'),
-              buildDataUser(user.website!),
-              labelFormItem('Endereço'),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    labelFormItem('Rua'),
-                    buildDataUser(user.address.street),
-                    labelFormItem('Cidade'),
-                    buildDataUser(user.address.city),
-                    labelFormItem('CEP'),
-                    buildDataUser(user.address.zipcode),
-                  ],
-                ),
+              const Text(
+                'Visão Geral',
+                style: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
               ),
-              labelFormItem('Empresa'),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    labelFormItem('Nome'),
-                    buildDataUser(user.company.name),
-                    labelFormItem('Ramo'),
-                    buildDataUser(user.company.bs),
-                  ],
-                ),
-              ),
+              buildLabelProfile('Perfil'),
+              buildTextProfile(text: 'Nome de Usuário', data: user.username!),
+              buildTextProfile(text: 'Email', data: user.email!),
+              buildTextProfile(text: 'Telefone', data: user.phone!),
+              buildTextProfile(text: 'Site', data: user.website!),
+              buildLabelProfile('Endereço'),
+              buildTextProfile(text: 'Rua', data: user.address.street),
+              buildTextProfile(text: 'Cidade', data: user.address.city),
+              buildTextProfile(text: 'CEP', data: user.address.zipcode),
+              buildLabelProfile('Empresa'),
+              buildTextProfile(text: 'Nome', data: user.company.name),
+              buildTextProfileBS(text: 'Ramo', data: user.company.bs),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 40.0),
                 child: Row(
@@ -99,13 +79,13 @@ class _ViewUser extends StatelessWidget {
                   children: <Widget>[
                     buildButtonOptions(
                         text: 'Editar',
-                        colorButton: Colors.blueAccent,
+                        colorButton: Colors.black,
                         onTap: () {
                           pushNavigator(context, UserEditContainer(user: user));
                         }),
                     buildButtonOptions(
                         text: 'Deletar',
-                        colorButton: Colors.redAccent,
+                        colorButton: floatActionButtonColor,
                         onTap: () {
                           BlocProvider.of<UserCubit>(context)
                               .deleteUser(context, user.id!);
@@ -120,10 +100,62 @@ class _ViewUser extends StatelessWidget {
     );
   }
 
+  Padding buildLabelProfile(String text) {
+    return  Padding(
+              padding: const EdgeInsets.only(top: 30.0, bottom: 10.0),
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+            );
+  }
+
+  Column buildTextProfile({required String text, required String data}) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            labelFormItem(text, size: 20, color: Colors.grey[700]!),
+            buildDataUser(data),
+          ],
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 10.0),
+          child: Divider(
+            height: 2,
+            thickness: 2,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column buildTextProfileBS({required String text, required String data}) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(child: labelFormItem(text, size: 20, color: Colors.grey[700]!)),
+            Expanded(child: buildDataUser(data)),
+          ],
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 10.0),
+          child: Divider(
+            height: 2,
+            thickness: 2,
+          ),
+        ),
+      ],
+    );
+  }
+
   Padding buildDataUser(String data) {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
-      child: labelForm(data, Colors.grey[700]!),
+      child: labelForm(data, Colors.black, size: 20.0),
     );
   }
 }

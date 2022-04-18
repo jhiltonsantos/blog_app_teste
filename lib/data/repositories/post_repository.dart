@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:blog_teste_tecnico/data/webclient.dart';
-import 'package:blog_teste_tecnico/domain/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/repositories/ipost_repository.dart';
 import 'package:http/http.dart' as http;
 
-class PostRepository {
+class PostRepository implements IPostRepository {
+  @override
   Future<List<Post>> findAllPosts() async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/posts'));
@@ -18,7 +20,7 @@ class PostRepository {
     return posts;
   }
 
-  // TODO: Testar funcao findAllPostsByUser
+  @override
   Future<List<Post>> findAllPostsByUser(int idUser) async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/posts'));
@@ -38,7 +40,8 @@ class PostRepository {
     return postsUser;
   }
 
-  Future<Post> findPostByID(int id) async {
+  @override
+  Future<Post> findPostById(int id) async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/posts/$id'));
 
@@ -49,6 +52,7 @@ class PostRepository {
     return Post.fromJson(decodedJson);
   }
 
+  @override
   Future<Post> savePost(Post post) async {
     final String postJson = jsonEncode(post.toJson());
     final http.Response response = await client
@@ -59,21 +63,10 @@ class PostRepository {
     return Post.fromJson(jsonDecode(response.body));
   }
 
-  Future<Post> updateTitle(int id, String title) async {
-    //final String updateJson = jsonEncode(post.toJson());
-    final http.Response response = await http.put(
-        Uri.parse('$baseUrl/posts/$id'),
-        headers: headerAPI,
-        body: jsonEncode(<String, String>{'title': title}));
-    if (response.statusCode != 200 || response.statusCode != 201) {
-      throw Exception('Falha no update');
-    }
-    return Post.fromJson(jsonDecode(response.body));
-  }
-
-  Future<Post> update(int id, Post post) async {
+  @override
+  Future<Post> updatePost(int id, Post post) async {
     final String updateJson = jsonEncode(post.toJson());
-    final http.Response response = await http.put(
+    final http.Response response = await client.put(
         Uri.parse('$baseUrl/posts/$id'),
         headers: headerAPI,
         body: updateJson);
@@ -83,8 +76,9 @@ class PostRepository {
     return Post.fromJson(jsonDecode(response.body));
   }
 
+  @override
   Future<http.Response> deletePost(int id) async {
-    final http.Response response = await http.delete(
+    final http.Response response = await client.delete(
       Uri.parse('$baseUrl/posts/$id'),
       headers: headerAPI,
     );

@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:flutter/material.dart';
 
 class UserItem extends StatelessWidget {
@@ -9,27 +9,30 @@ class UserItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () => onTap(),
-        leading: Text(
-          user.id.toString(),
-          style: const TextStyle(
-            fontSize: 16.0,
-          ),
-        ),
-        title: Text(
-          user.name!,
-          style: const TextStyle(
-            fontSize: 24.0,
-          ),
-        ),
-        subtitle: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Text(
-            'Empresa: ${user.company.name.toString()}',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Card(
+        child: ListTile(
+          onTap: () => onTap(),
+          leading: Text(
+            user.id.toString(),
             style: const TextStyle(
               fontSize: 16.0,
+            ),
+          ),
+          title: Text(
+            user.name!,
+            style: const TextStyle(
+              fontSize: 24.0,
+            ),
+          ),
+          subtitle: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Text(
+              'Empresa: ${user.company.name.toString()}',
+              style: const TextStyle(
+                fontSize: 16.0,
+              ),
             ),
           ),
         ),

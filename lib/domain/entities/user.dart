@@ -1,5 +1,5 @@
-import 'package:blog_teste_tecnico/domain/address.dart';
-import 'package:blog_teste_tecnico/domain/company.dart';
+import 'package:blog_teste_tecnico/domain/entities/address.dart';
+import 'package:blog_teste_tecnico/domain/entities/company.dart';
 
 class User {
   int? id;
