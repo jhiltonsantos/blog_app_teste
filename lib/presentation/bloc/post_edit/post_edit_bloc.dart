@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:blog_teste_tecnico/data/repositories/post_repository.dart';
-import 'package:blog_teste_tecnico/domain/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +44,7 @@ class PostEditCubit extends Cubit<PostEditState> {
   }
 
   _send(int id, Post post, BuildContext context) async {
-    await _postRepository.update(id, post).then((_) =>
+    await _postRepository.updatePost(id, post).then((_) =>
         emit(const SentPostEditState())).catchError((error) {
       emit(ErrorPostEditState(error.message));
     }, test: (error) => error is HttpException).catchError((error) {

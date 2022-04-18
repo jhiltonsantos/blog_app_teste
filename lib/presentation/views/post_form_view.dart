@@ -1,5 +1,5 @@
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/post_form/post_form_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';

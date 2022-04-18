@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/views/user_form_view.dart';

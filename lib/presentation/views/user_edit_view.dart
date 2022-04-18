@@ -1,7 +1,7 @@
-import 'package:blog_teste_tecnico/domain/address.dart';
-import 'package:blog_teste_tecnico/domain/company.dart';
-import 'package:blog_teste_tecnico/domain/geo.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/address.dart';
+import 'package:blog_teste_tecnico/domain/entities/company.dart';
+import 'package:blog_teste_tecnico/domain/entities/geo.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/label_form_item.dart';

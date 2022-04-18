@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:blog_teste_tecnico/data/repositories/photo_repository.dart';
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,16 +36,15 @@ class ErrorPhotoEditState extends PhotoEditState {
 class PhotoEditCubit extends Cubit<PhotoEditState> {
   PhotoEditCubit() : super(const ShowPhotoEditState());
 
+  final PhotoRepository _photoRepository = PhotoRepository();
 
   void update(int id, Photo photo, BuildContext context) async {
     emit(const SendingPhotoEditState());
     await _send(id, photo, context);
   }
 
-  final PhotoRepository _photoRepository = PhotoRepository();
-
   _send(int id, Photo photo, BuildContext context) async {
-    await _photoRepository.update(id, photo).then((_) =>
+    await _photoRepository.updatePhoto(id, photo).then((_) =>
         emit(const SentPhotoEditState())).catchError((error) {
       emit(ErrorPhotoEditState(error.message));
     }, test: (error) => error is HttpException).catchError((error) {

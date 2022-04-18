@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo_form/photo_form_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';

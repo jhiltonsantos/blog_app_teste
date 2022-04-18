@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/domain/geo.dart';
+import 'package:blog_teste_tecnico/domain/entities/geo.dart';
 
 class Address {
   String street;

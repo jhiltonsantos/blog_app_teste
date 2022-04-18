@@ -1,6 +1,6 @@
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/views/photo_view.dart';
 import 'package:flutter/material.dart';

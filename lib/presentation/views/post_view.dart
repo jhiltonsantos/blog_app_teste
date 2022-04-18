@@ -1,9 +1,9 @@
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user_posts/user_posts_container.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
+import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/button_options.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
@@ -14,7 +14,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostView extends StatelessWidget {
   const PostView({Key? key}) : super(key: key);
-  // TODO: AO CLICAR NO NOME DO USUARIO MOSTRAR O PERFIL DELE
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PostCubit, PostState>(
@@ -94,7 +93,7 @@ class _ViewPost extends StatelessWidget {
                   children: <Widget>[
                     buildButtonOptions(
                       text: 'Editar',
-                      colorButton: Colors.blue,
+                      colorButton: Colors.black,
                       onTap: () async {
                         await Navigator.push(
                           context,
@@ -106,7 +105,7 @@ class _ViewPost extends StatelessWidget {
                     ),
                     buildButtonOptions(
                       text: 'Deletar',
-                      colorButton: Colors.redAccent,
+                      colorButton: floatActionButtonColor,
                       onTap: () {
                         BlocProvider.of<PostCubit>(context)
                             .delete(post.id, context);

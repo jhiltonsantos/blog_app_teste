@@ -1,8 +1,9 @@
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo_edit/photo_edit_container.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
+import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/button_options.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
@@ -88,14 +89,14 @@ class _ViewPhoto extends StatelessWidget {
                   children: <Widget>[
                     buildButtonOptions(
                         text: 'Editar',
-                        colorButton: Colors.blueAccent,
+                        colorButton: Colors.black,
                         onTap: () {
                           pushNavigator(
                               context, PhotoEditContainer(photo: photo));
                         }),
                     buildButtonOptions(
                         text: 'Deletar',
-                        colorButton: Colors.redAccent,
+                        colorButton: floatActionButtonColor,
                         onTap: () {
                           BlocProvider.of<PhotoCubit>(context)
                               .delete(photo.id!, context);

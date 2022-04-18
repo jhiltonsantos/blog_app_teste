@@ -1,4 +1,4 @@
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo_edit/photo_edit_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
@@ -77,16 +77,15 @@ class _UpdatePhotoView extends StatelessWidget {
                       if (_title.isEmpty || _url.isEmpty) {
                         const ErrorPhotoEditState('Faltando dados');
                       } else {
-                        final _photoCreated = Photo(
+                        final photoCreated = Photo(
                           albumId: 10,
                           id: 5001,
                           title: _title,
                           url: _url,
-                          thumbnailUrl:
-                              "https://via.placeholder.com/150/92c952",
+                          thumbnailUrl: photo.thumbnailUrl,
                         );
                         BlocProvider.of<PhotoEditCubit>(context)
-                            .update(photo.id!, _photoCreated, context);
+                            .update(photo.id!, photoCreated, context);
                       }
                     },
                   ),

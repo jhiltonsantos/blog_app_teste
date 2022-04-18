@@ -1,5 +1,5 @@
 import 'package:blog_teste_tecnico/presentation/bloc/photo_form/photo_form_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/views/photo_form_view.dart';
 import 'package:flutter/material.dart';

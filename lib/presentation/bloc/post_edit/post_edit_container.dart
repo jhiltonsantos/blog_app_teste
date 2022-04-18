@@ -1,6 +1,6 @@
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/post_edit/post_edit_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/views/post_edit_view.dart';

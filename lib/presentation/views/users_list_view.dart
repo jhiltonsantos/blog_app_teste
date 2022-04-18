@@ -1,11 +1,11 @@
 import 'package:blog_teste_tecnico/data/repositories/user_repository.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_posts/user_posts_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/progress_indicate.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/user_item.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/users_list/users_list_bloc.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,7 @@ class UsersListView extends StatelessWidget {
                 final User user = users[index];
                 return UserItem(
                     onTap: () async {
-                      pushNavigator(context, UserContainer(user));
+                      pushNavigator(context, UserPostsContainer(user: user));
                     },
                     user: user);
               },
@@ -58,7 +58,6 @@ class UsersListView extends StatelessWidget {
           );
         },
       ),
-      // TODO: Criar a funcao de criar novo usuario
       floatingActionButton: buildAddUserButton(context),
     );
   }

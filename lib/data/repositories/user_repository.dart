@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:blog_teste_tecnico/data/webclient.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:blog_teste_tecnico/domain/repositories/iuser_repository.dart';
 import 'package:http/http.dart' as http;
 
-class UserRepository {
+class UserRepository implements IUserRepository {
+  @override
   Future<List<User>> findAllUser() async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/users'));
@@ -17,6 +19,7 @@ class UserRepository {
     return users;
   }
 
+  @override
   Future<User> findUserByID(int id) async {
     final http.Response response =
         await client.get(Uri.parse('$baseUrl/users/$id'));
@@ -26,6 +29,7 @@ class UserRepository {
     return User.fromJson(jsonDecode(response.body));
   }
 
+  @override
   Future<User> saveUser(User user) async {
     final String userJson = jsonEncode(user.toJson());
     final http.Response response = await client
@@ -36,22 +40,10 @@ class UserRepository {
     return User.fromJson(jsonDecode(response.body));
   }
 
-  Future<User> updateNameUser(int id, String name) async {
-    final http.Response response =
-        await http.put(Uri.parse('$baseUrl/users/$id'),
-            headers: headerAPI,
-            body: jsonEncode({
-              'name': name,
-            }));
-    if (response.statusCode != 200) {
-      throw Exception('Falha ao atualizar nome do usuario');
-    }
-    return User.fromJson(jsonDecode(response.body));
-  }
-
+  @override
   Future<User> updateUser(int id, User user) async {
     final String updateJson = jsonEncode(user.toJson());
-    final http.Response response = await http.put(
+    final http.Response response = await client.put(
         Uri.parse('$baseUrl/users/$id'),
         headers: headerAPI,
         body: updateJson);
@@ -61,8 +53,9 @@ class UserRepository {
     return User.fromJson(jsonDecode(response.body));
   }
 
+  @override
   Future<http.Response> deleteUser(int id) async {
-    final http.Response response = await http.delete(
+    final http.Response response = await client.delete(
       Uri.parse('$baseUrl/users/$id'),
       headers: headerAPI,
     );

@@ -1,8 +1,8 @@
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/post_edit/post_edit_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/user/user_container.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/label_form.dart';
@@ -92,7 +92,9 @@ class _NewPostView extends StatelessWidget {
                     onPressed: () {
                       final String title = _titleController.text;
                       final String body = _bodyController.text;
-                      if (title.isEmpty || body.isEmpty) {
+                      if (title.isEmpty ||
+                          body.isEmpty ||
+                          (title == post.title && body == post.body)) {
                         const ErrorPostEditState('Faltam dados');
                       } else {
                         final postUpdated = Post(1, 101, title, body);

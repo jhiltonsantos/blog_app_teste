@@ -1,7 +1,7 @@
 import 'package:blog_teste_tecnico/data/repositories/post_repository.dart';
 import 'package:blog_teste_tecnico/data/repositories/user_repository.dart';
-import 'package:blog_teste_tecnico/domain/post.dart';
-import 'package:blog_teste_tecnico/domain/user.dart';
+import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

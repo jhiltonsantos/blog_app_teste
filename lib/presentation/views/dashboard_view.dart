@@ -1,8 +1,8 @@
-import 'package:blog_teste_tecnico/domain/photo.dart';
+import 'package:blog_teste_tecnico/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/dashboard/dashboard_bloc.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/photo_form/photo_form_container.dart';
-import 'package:blog_teste_tecnico/presentation/components/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/app_bar_blog_app.dart';
 import 'package:blog_teste_tecnico/presentation/components/theme/bottom_navigation_widget.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/failure_dialog.dart';
@@ -22,6 +22,7 @@ class DashboardView extends StatelessWidget {
         preferredSize: Size.fromHeight(120),
         child: AppBarBlogApp(
           title: 'Blog App',
+          fontSize: 28.0,
           leadingIcon: Icons.stream_outlined,
           rightIcon: Icons.account_circle_outlined,
         ),
