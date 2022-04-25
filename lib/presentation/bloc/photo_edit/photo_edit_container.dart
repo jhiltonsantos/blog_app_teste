@@ -1,8 +1,9 @@
 import 'package:blog_teste_tecnico/domain/entities/photo.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/photo_edit/photo_edit_bloc.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/photo_edit/photo_edit_cubit.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/photo_edit/photo_edit_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/views/photo_edit_view.dart';
+import 'package:blog_teste_tecnico/presentation/pages/photo_edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class PhotoEditContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Foto Atualizada');
           }
         },
-        child: PhotoEditView(photo: photo),
+        child: PhotoEditPage(photo: photo),
       ),
     );
   }

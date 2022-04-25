@@ -40,11 +40,13 @@ class PhotoItem extends StatelessWidget {
                 children: [
                   Text(
                     "Imagem: ${photo.id!.toString()}",
-                    style: buildTextStyle(),
+                    style: const TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Álbum: ${photo.albumId!.toString()}",
-                    style: buildTextStyle(),
+                    style: const TextStyle(
+                        fontSize: 20.0, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -54,7 +56,4 @@ class PhotoItem extends StatelessWidget {
       ),
     );
   }
-
-  TextStyle buildTextStyle() =>
-      const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold);
 }

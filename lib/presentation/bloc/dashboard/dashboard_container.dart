@@ -1,10 +1,10 @@
 import 'package:blog_teste_tecnico/data/repositories/photo_repository.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
-import 'package:blog_teste_tecnico/presentation/views/dashboard_view.dart';
+import 'package:blog_teste_tecnico/presentation/pages/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'dashboard_bloc.dart';
+import 'dashboard_cubit.dart';
 
 class DashboardContainer extends BlocContainer {
   const DashboardContainer({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class DashboardContainer extends BlocContainer {
   Widget build(BuildContext context) {
     final PhotoRepository photo = PhotoRepository();
     return BlocProvider<DashboardCubit>(
-        child: const DashboardView(),
+        child: const DashboardPage(),
         create: (BuildContext context) {
           final cubit = DashboardCubit();
           cubit.reloadList(photo);

@@ -1,8 +1,9 @@
 import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/post_form/post_form_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/post_form/post_form_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/views/post_form_view.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/post_form/post_form_cubit.dart';
+import 'package:blog_teste_tecnico/presentation/pages/post_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class PostFormContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Post Criado');
           }
         },
-        child: PostFormView(userPost: user),
+        child: PostFormPage(userPost: user),
       ),
     );
   }

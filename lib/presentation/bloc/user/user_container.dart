@@ -1,8 +1,9 @@
 import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user/user_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/views/user_view.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user/user_cubit.dart';
+import 'package:blog_teste_tecnico/presentation/pages/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class UserContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Usuario Deletado');
           }
         },
-        child: const UserView(),
+        child: const UserPage(),
       ),
     );
   }

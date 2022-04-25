@@ -1,16 +1,17 @@
 import 'package:blog_teste_tecnico/domain/entities/post.dart';
+import 'package:http/http.dart' as http;
 
 abstract class IPostRepository {
-  Future<List<dynamic>> findAllPosts();
+  Future<List<Post>> findAllPosts();
 
-  Future<dynamic> findAllPostsByUser(int idUser);
+  Future<List<Post>> findAllPostsByUser(int idUser);
 
-  Future<dynamic> findPostById(int id);
+  Future<Post> findPostById(int id);
 
-  Future<dynamic> savePost(Post post);
+  Future<Post> savePost(Post post);
 
-  Future<dynamic> updatePost(int id, Post post);
+  Future<Post> updatePost(int id, Post post);
 
-  Future<dynamic> deletePost(int id);
+  Future<http.Response> deletePost(int id);
 
 }

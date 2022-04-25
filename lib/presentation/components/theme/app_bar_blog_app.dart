@@ -33,7 +33,6 @@ class AppBarBlogApp extends StatelessWidget {
                 onTap: leadingOnTap ?? () {},
                 child: Icon(leadingIcon, size: 30.0),
               ),
-              // TODO: Melhorar title da AppBar
               Expanded(
                 flex: flex ?? 0,
                 child: Padding(

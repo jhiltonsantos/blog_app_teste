@@ -1,14 +1,15 @@
 import 'package:blog_teste_tecnico/domain/entities/user.dart';
+import 'package:http/http.dart' as http;
 
 abstract class IUserRepository {
-  Future<List<dynamic>> findAllUser();
+  Future<List<User>> findAllUser();
 
-  Future<dynamic> findUserByID(int id);
+  Future<User> findUserByID(int id);
 
-  Future<dynamic> saveUser(User user);
+  Future<User> saveUser(User user);
 
-  Future<dynamic> updateUser(int id, User user);
+  Future<User> updateUser(int id, User user);
 
-  Future<dynamic> deleteUser(int id);
+  Future<http.Response> deleteUser(int id);
 
 }

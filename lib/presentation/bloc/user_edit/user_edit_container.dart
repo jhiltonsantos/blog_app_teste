@@ -1,8 +1,9 @@
 import 'package:blog_teste_tecnico/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/views/user_edit_view.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_edit/user_edit_cubit.dart';
+import 'package:blog_teste_tecnico/presentation/pages/user_edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +25,7 @@ class UserEditContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Usuário Atualizado');
           }
         },
-        child: UserEditView(user: user),
+        child: UserEditPage(user: user),
       ),
     );
   }

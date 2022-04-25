@@ -1,7 +1,8 @@
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_bloc.dart';
-import 'package:blog_teste_tecnico/presentation/views/user_form_view.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/user_form/user_form_cubit.dart';
+import 'package:blog_teste_tecnico/presentation/pages/user_form_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class UserFormContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Usuário Criado');
           }
         },
-        child: const UserFormView(),
+        child: const UserFormPage(),
       ),
     );
   }

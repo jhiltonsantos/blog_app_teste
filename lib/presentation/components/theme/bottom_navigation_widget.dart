@@ -1,7 +1,7 @@
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
-import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/posts_list/posts_list_container.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/users_list/users_list_container.dart';
+import 'package:blog_teste_tecnico/presentation/components/theme/colors_components.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -30,13 +30,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       ),
     ),
   ];
-
-  Widget _buildItem(NavigationItem item) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[item.icon],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +63,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                     pushNavigator(context, const UsersListContainer());
                   }
                 },
-                child: _buildItem(item),
+                child: BuildItem(item: item),
               );
             }).toList(),
           ),
@@ -84,4 +77,18 @@ class NavigationItem {
   final Icon icon;
 
   NavigationItem(this.icon);
+}
+
+class BuildItem extends StatelessWidget {
+  final NavigationItem item;
+
+  const BuildItem({Key? key, required this.item}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[item.icon],
+    );
+  }
 }

@@ -1,8 +1,9 @@
 import 'package:blog_teste_tecnico/domain/entities/photo.dart';
-import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_bloc.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_cubit.dart';
 import 'package:blog_teste_tecnico/presentation/bloc/bloc_container.dart';
+import 'package:blog_teste_tecnico/presentation/bloc/photo/photo_state.dart';
 import 'package:blog_teste_tecnico/presentation/components/widgets/show_successful_dialog.dart';
-import 'package:blog_teste_tecnico/presentation/views/photo_view.dart';
+import 'package:blog_teste_tecnico/presentation/pages/photo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +22,7 @@ class PhotoContainer extends BlocContainer {
             showSuccessfulDialog(context, 'Foto Deletada');
           }
         },
-        child: const PhotoView(),
+        child: const PhotoPage(),
       ),
     );
   }
