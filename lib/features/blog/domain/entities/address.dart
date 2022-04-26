@@ -1,13 +1,15 @@
+import 'package:equatable/equatable.dart';
+
 import 'geo.dart';
 
-class Address {
-  String street;
-  String suite;
-  String city;
-  String zipcode;
-  Geo? geo;
+class Address extends Equatable {
+  final String street;
+  final String suite;
+  final String city;
+  final String zipcode;
+  final Geo? geo;
 
-  Address(this.street, this.suite, this.city, this.zipcode, this.geo);
+  const Address(this.street, this.suite, this.city, this.zipcode, this.geo);
 
   Address.fromJson(Map<String, dynamic> json)
       : street = json['street'],
@@ -23,4 +25,7 @@ class Address {
         'zipcode': zipcode,
         'geo': geo!.toJson(),
       };
+
+  @override
+  List<Object?> get props => [street, suite, city, zipcode, geo];
 }

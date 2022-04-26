@@ -1,8 +1,10 @@
-class Geo {
-  String lat;
-  String lng;
+import 'package:equatable/equatable.dart';
 
-  Geo(this.lat, this.lng);
+class Geo extends Equatable {
+  final String lat;
+  final String lng;
+
+  const Geo(this.lat, this.lng);
 
   Geo.fromJson(Map<String, dynamic> json)
       : lat = json['lat'],
@@ -12,4 +14,7 @@ class Geo {
         'lat': lat,
         'lng': lng,
       };
+
+  @override
+  List<Object?> get props => [lat, lng];
 }

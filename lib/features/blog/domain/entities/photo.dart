@@ -1,11 +1,13 @@
-class Photo {
-  int? albumId;
-  int? id;
-  String? title;
-  String? url;
-  String? thumbnailUrl;
+import 'package:equatable/equatable.dart';
 
-  Photo({this.albumId, this.id, this.title, this.url, this.thumbnailUrl});
+class Photo extends Equatable {
+  final int? albumId;
+  final int? id;
+  final String? title;
+  final String? url;
+  final String? thumbnailUrl;
+
+  const Photo({this.albumId, this.id, this.title, this.url, this.thumbnailUrl});
 
   Photo.fromJson(Map<String, dynamic> json)
       : albumId = json['albumId'],
@@ -21,4 +23,7 @@ class Photo {
         'url': url,
         'thumbnailUrl': thumbnailUrl
       };
+
+  @override
+  List<Object?> get props => [albumId, id, title, url, thumbnailUrl];
 }

@@ -5,7 +5,7 @@ import 'package:blog_teste_tecnico/features/blog/presentation/pages/dashboard_pa
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+/*
 class DashboardContainer extends BlocContainer {
   const DashboardContainer({Key? key}) : super(key: key);
 
@@ -21,3 +21,5 @@ class DashboardContainer extends BlocContainer {
         });
   }
 }
+
+*/

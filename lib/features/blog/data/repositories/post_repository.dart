@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:blog_teste_tecnico/features/blog/domain/entities/post.dart';
 import 'package:blog_teste_tecnico/features/blog/domain/repositories/ipost_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../webclient.dart';
 
+@injectable
 class PostRepository implements IPostRepository {
   @override
   Future<List<Post>> findAllPosts() async {

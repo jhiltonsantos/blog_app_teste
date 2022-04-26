@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 abstract class DashboardState {
   const DashboardState();
+
+  List<Object> get props => [];
 }
 
 @immutable
@@ -19,6 +21,9 @@ class LoadingDashboardState extends DashboardState {
 class LoadedDashboardState extends DashboardState {
   final List<Photo> photos;
   const LoadedDashboardState(this.photos);
+
+  @override
+  List<Object> get props => [photos];
 }
 
 @immutable
@@ -26,4 +31,7 @@ class ErrorDashboardState extends DashboardState {
   final String message;
 
   const ErrorDashboardState(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

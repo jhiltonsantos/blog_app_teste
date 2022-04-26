@@ -1,9 +1,11 @@
-class Company {
-  String name;
-  String catchPhrase;
-  String bs;
+import 'package:equatable/equatable.dart';
 
-  Company(this.name, this.catchPhrase, this.bs);
+class Company extends Equatable {
+  final String name;
+  final String catchPhrase;
+  final String bs;
+
+  const Company(this.name, this.catchPhrase, this.bs);
 
   Company.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -15,4 +17,7 @@ class Company {
         'catchPhrase': catchPhrase,
         'bs': bs,
       };
+
+  @override
+  List<Object?> get props => [name, catchPhrase, bs];
 }

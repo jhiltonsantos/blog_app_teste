@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:blog_teste_tecnico/features/blog/domain/entities/user.dart';
 import 'package:blog_teste_tecnico/features/blog/domain/repositories/iuser_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../webclient.dart';
 
+@injectable
 class UserRepository implements IUserRepository {
   @override
   Future<List<User>> findAllUser() async {

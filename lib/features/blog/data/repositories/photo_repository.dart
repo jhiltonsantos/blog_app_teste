@@ -4,9 +4,10 @@ import 'package:blog_teste_tecnico/features/blog/data/webclient.dart';
 import 'package:blog_teste_tecnico/features/blog/domain/entities/photo.dart';
 import 'package:blog_teste_tecnico/features/blog/domain/repositories/iphoto_repository.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@injectable
 class PhotoRepository implements IPhotoRepository {
-
   @override
   Future<List<Photo>> findAllPhotos() async {
     final http.Response response =

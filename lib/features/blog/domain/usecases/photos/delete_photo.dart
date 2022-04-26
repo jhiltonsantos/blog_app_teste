@@ -1,7 +1,9 @@
 import 'package:blog_teste_tecnico/core/usecases/usecase.dart';
 import 'package:blog_teste_tecnico/features/blog/data/repositories/photo_repository.dart';
 import 'package:http/http.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class DeletePhoto extends UserCase<Response, NoParams> {
   final PhotoRepository photoRepository;
   final int id;
@@ -10,6 +12,6 @@ class DeletePhoto extends UserCase<Response, NoParams> {
 
   @override
   Future<Response> call(NoParams params) {
-   return photoRepository.deletePhoto(id);
+    return photoRepository.deletePhoto(id);
   }
 }
