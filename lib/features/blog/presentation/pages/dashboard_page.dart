@@ -12,12 +12,14 @@ import 'package:blog_teste_tecnico/features/blog/presentation/components/widgets
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // TODO: Receber Fotos do Cubit.findAllPhotos
+    void reloadPhotos(BuildContext context) {}
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(120),
@@ -70,11 +72,8 @@ class DashboardPage extends StatelessWidget {
         },
         child: const Icon(
           Icons.add_photo_alternate_outlined,
-
         ),
       ),
     );
   }
 }
-
-
