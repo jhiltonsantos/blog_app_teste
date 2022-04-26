@@ -12,14 +12,23 @@ import 'package:blog_teste_tecnico/features/blog/presentation/components/widgets
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // TODO: Receber Fotos do Cubit.findAllPhotos
-    void reloadPhotos(BuildContext context) {}
+  State<DashboardPage> createState() => _DashboardPageState();
+}
 
+class _DashboardPageState extends State<DashboardPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    final allPhotoCubit = context.read<DashboardCubit>();
+    allPhotoCubit.findAllPhotos();
+  }
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(120),

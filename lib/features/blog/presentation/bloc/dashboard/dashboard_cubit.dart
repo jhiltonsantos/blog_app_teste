@@ -12,7 +12,7 @@ class DashboardCubit extends Cubit<DashboardState> {
 
   DashboardCubit(this._allPhotos) : super(const InitDashboardState());
 
-  Future<void> findAllPhotos(PhotoRepository photo) async {
+  Future<void> findAllPhotos() async {
     emit(const LoadingDashboardState());
     //final response = await _allPhotos(NoParams());
     //response.then((photos) => emit(LoadedDashboardState(photos)));
