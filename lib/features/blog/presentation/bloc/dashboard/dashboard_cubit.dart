@@ -1,6 +1,4 @@
-import 'package:blog_teste_tecnico/core/error/failures.dart';
 import 'package:blog_teste_tecnico/core/usecases/usecase.dart';
-import 'package:blog_teste_tecnico/features/blog/data/repositories/photo_repository.dart';
 import 'package:blog_teste_tecnico/features/blog/domain/usecases/photos/find_all_photos.dart';
 import 'package:blog_teste_tecnico/features/blog/presentation/bloc/dashboard/dashboard_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
